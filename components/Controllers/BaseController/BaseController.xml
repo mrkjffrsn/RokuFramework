@@ -1,0 +1,23 @@
+
+<component name="BaseController" extends="Group">
+
+  <script type="text/brightscript" uri="pkg:/components/Controllers/BaseController/BaseController.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Utils/sceneUtils.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Utils/httpClient.brs" />
+  <script type="text/brightscript" uri="pkg:/source/Utils/generalUtils.brs" />
+  <script type="text/brightscript" uri="pkg:/source/constants.brs" />
+
+  <interface>
+      <field id="onNavigationEvent" type="assocarray" alwaysNotify="true" onChange="onNavigationEvent" />
+  </interface>
+
+  <children>
+
+    <!-- Background -->
+    <Rectangle id="" color="#393D46FF" width="1920" height="1080" translation="[0,0]" />
+
+    <!-- Menu -->
+
+  </children>
+
+</component>

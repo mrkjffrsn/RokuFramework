@@ -1,0 +1,12 @@
+<component name="HomeController" extends="BaseController">
+
+  <script type="text/brightscript" uri="pkg:/components/Controllers/HomeController/HomeController.brs" />
+
+  <children>
+
+    <!-- Load the homepage menu -->
+    <Label text="HomePage" />
+
+  </children>
+
+</component>

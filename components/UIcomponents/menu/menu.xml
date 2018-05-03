@@ -1,0 +1,20 @@
+
+<component name="menu" extends="baseUIComponent">
+
+  <script type="text/brightscript" uri="pkg:/components/UIComponents/menu/menu.brs" />
+
+  <interface>
+
+  </interface>
+
+  <children>
+
+    <!-- Rectangle Component -->
+
+      <!-- Gazebo Logo -->
+
+      <!-- Menu on Right side - Conditional ( Only if user is signed in ) -->
+
+  </children>
+
+</component>

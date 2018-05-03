@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="BaseScene" extends="Scene">
+
+  <script type="text/brightscript" uri="pkg:/components/BaseScene/BaseScene.brs" />
+  <script type="text/brightscript" uri="pkg:/components/BaseScene/controllerLoaders.brs" />
+  <script type="text/brightscript" uri="pkg:/source/Utils/generalUtils.brs" />
+  <script type="text/brightscript" uri="pkg:/source/constants.brs" />
+  <script type="text/brightscript" uri="pkg:/source/Factories/controllerFactory.brs" />
+
+  <interface>
+    <field id="currentController" type="node" />
+    <field id="loadController" type="assocarray" alwaysNotify="true" onchange="onLoad" />
+    <field id="unloadController" type="boolean" alwaysNotify="true" onchange="onUnLoad" />
+
+    <field id="httpTask" type="node" />
+  </interface>
+
+  <children>
+
+    <!-- Controller View -->
+    <Group id="controllerView"> </Group>
+
+    <!-- Dialog View -->
+
+
+  </children>
+
+</component>

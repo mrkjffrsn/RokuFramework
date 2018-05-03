@@ -1,0 +1,13 @@
+<component name="HttpTask" extends="Task" >
+
+  <script type="text/brightscript" uri="pkg:/components/Tasks/HttpTask/HttpTask.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Utils/sceneUtils.brs" />
+  <script type="text/brightscript" uri="pkg:/source/Utils/generalUtils.brs" />
+  <script type="text/brightscript" uri="pkg:/source/constants.brs" />
+
+  <interface>
+    <field id="request" type="assocarray" />
+    <field id="response" type="assocarray" />
+  </interface>
+
+</component>
