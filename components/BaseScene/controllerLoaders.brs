@@ -3,45 +3,44 @@
 
 function onLoad( event as Object )
 
-  pageParams = event.getData()
+  pageInfo = event.getData()
 
-  initiateOnNavigationAway( m.top.currentController )
+  initiateNavigationAway( m.top.currentController )
 
-  m.navigationStack.push( pageParams )
+  if ( (not isValid(pageInfo.ignoreOnBack)) or (isValid(pageInfo.ignoreOnBack) and not pageInfo.ignoreOnBack) )
+    m.navigationStack.push( pageInfo )
+  end if
 
-  attachController( pageParams )
+  attachController( pageInfo )
 end function
 
 
 function onUnLoad( event as Object )
 
-  params = event.getData()
+  isPagePopping = event.getData()
 
-  pageParams = getNextPageParams()
+  if (isPagePopping)
 
-  if (params)
-    if ( isValid(pageParams.ignoreOnBack) and pageParams.ignoreOnBack )
-      pageParams = getNextPageParams()
-    end if
+    pageInfo = getNextPageInfo()
 
-    initiateOnNavigationAway( m.top.currentController )
+    initiateNavigationAway( m.top.currentController )
 
-    if (isValid(pageParams))
-      attachController( pageParams )
+    if (isValid(pageInfo))
+      attachController( pageInfo )
     end if
   end if
 end function
 
 
 ' Loads the controller and attaches it to the scene'
-function attachController( pageParams as Object )
+function attachController( pageInfo as Object )
 
     constants = GetConstants()
-    controller = CreateController( pageParams.page )
+    controller = CreateController( pageInfo.page )
 
     if (isValid(controller))
 
-      controller.onNavigationEvent = { type: constants.NAVIGATION_TYPES.NAVIGATE_TO, params: pageParams.params }
+      controller.onNavigationEvent = { type: constants.NAVIGATION_TYPES.NAVIGATE_TO, params: pageInfo.params }
 
       m.controllerView.removeChildIndex(1)
       m.controllerView.insertChild( controller, 1 )
@@ -50,7 +49,7 @@ function attachController( pageParams as Object )
     end if
 end function
 
-function initiateOnNavigationAway( currentController )
+function initiateNavigationAway( currentController )
 
   constants = GetConstants()
 
@@ -63,7 +62,6 @@ end function
 
 ' Returns the next page params. If no page, then returns invalid'
 '@return Object'
-function getNextPageParams() as Object
-  m.navigationStack.pop()
-  return m.navigationStack.peek()
+function getNextPageInfo() as Object
+  return m.navigationStack.pop()
 end function

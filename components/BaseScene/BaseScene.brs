@@ -1,6 +1,5 @@
 
 ' Code Behind for BaseScene'
-
 function Init()
 
   m.top.id = "BaseScene"
@@ -14,7 +13,7 @@ function Init()
 end function
 
 
-'Creates and set's the http task node
+'Creates a HTTP Task
 function SetupHttpListener()
 
   httpTask = CreateObject("roSGNode", "HttpTask")
