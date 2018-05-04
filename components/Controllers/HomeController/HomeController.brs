@@ -38,5 +38,5 @@ end function
 
 ' Homepage callback'
 function onHomePageLoad( data, params )
-  
+
 end function
