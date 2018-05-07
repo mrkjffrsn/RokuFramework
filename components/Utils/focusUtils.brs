@@ -3,7 +3,7 @@
 '---------------------------------------------'
 
 'Sets focus on '
-function applyFocus(obj as Object, focusState = true as Boolean, log = "" as String, )
+function applyFocus(obj as Object, focusState = true as Boolean, log = "" as String )
 
   if (isValid(obj))
 

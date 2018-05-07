@@ -1,7 +1,7 @@
 
 
 ' Entry point for App'
-function Main(input as Dynamic)
+function Main(args as Dynamic)
 
   ' TODO: Deeplinking feature to be added
   constants = GetConstants()
@@ -17,6 +17,13 @@ function Main(input as Dynamic)
 
   ' Load first page'
   scene.loadController = { page: constants.CONTROLLERS.HOME, params: { } }
+
+  ' Run Tests
+  if ( args.RunTests = "true" and (isValid(TestRunner) and type(TestRunner) = "Function") )
+      Runner = TestRunner()
+      Runner.logger.SetVerbosity(1)
+      Runner.Run()
+  end if
 
   ' Start the main event loop here'
   mainEventLoop( port )
