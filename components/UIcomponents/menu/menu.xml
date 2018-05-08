@@ -9,11 +9,13 @@
 
   <children>
 
-    <!-- Rectangle Component -->
+    <!-- Logo -->
 
-      <!-- Logo -->
-
-      <!-- Menu on Right side - Conditional ( Only if user is signed in ) -->
+    <!-- Search Button -->
+    <LayoutGroup id="lytOption" layoutDirection="horiz" itemSpacings="[14]" translation="[1596, 61]" vertAlignment="center" >
+        <Label id="lblSearch" text="Search" color="#000000ff" />
+        <Poster id="pstrOptions" uri="pkg:/images/fhd/home/options.jpeg" />
+    </LayoutGroup>
 
   </children>
 

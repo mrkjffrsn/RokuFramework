@@ -2,41 +2,29 @@ function init()
 
   m.top.id = "HomeController"
 
+  m.rwlstCategories = m.top.findNode("rwlstCategories")
 end function
 
+' LIFE CYCLE METHODS '
+
 function onNavigateTo( params as Object )
-
-  getHomePageData()
-
+  categoriesService().getCategories( onCategoriesDataLoad )
 end function
 
 function onNavigateAway( params as Object )
-
 end function
 
-' PAGE METHODS '
 
-' Get sample data'
-function getHomePageData()
+' PAGE HELPER METHODS '
 
-  m.http = httpClient()
+' Async categories callback
+' @param Object data
+' @param Object callback parameters'
+function onCategoriesDataLoad( data, params )
 
-  request = {
-    method: "GET",
-    url: "https://basic-blog.prismic.io/api/v2/documents/search?ref=Wh3rNSEAADqKYyzq",
-    headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json"
-    },
-    callback: onHomePageLoad,
-    callbackParams: { page: "HomePage" }
-  }
+  rowListData = CreateObject( "roSGNode", "ContentNode" )
+  rowListData.appendChild( data )
 
-  m.http.sendRequest( request )
-
-end function
-
-' Homepage callback'
-function onHomePageLoad( data, params )
-
+  m.rwlstCategories.content = rowListData
+  m.rwlstCategories.setFocus(true)
 end function

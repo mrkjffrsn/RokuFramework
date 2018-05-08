@@ -1,0 +1,7 @@
+<component name="CategoryModel" extends="ContentNode" >
+
+  <interface>
+      <field id="imageUrl" type="string" />
+  </interface>
+
+</component>

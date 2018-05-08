@@ -20,4 +20,4 @@ splash_color=#01779a
 splash_min_time=2500
 
 #Resolutions
-ui_resolutions = fhd
+ui_resolutions=fhd
