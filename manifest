@@ -13,11 +13,11 @@ mm_icon_focus_hd=pkg:/images/hd/logo/TribalHD-Logo.jpg
 mm_icon_focus_sd=pkg:/images/sd/logo/TribalSD-Logo.jpg
 
 #Splash
-splash_screen_sd=pkg:/images/sd/logo/TribalSD-splash.jpg
-splash_screen_hd=pkg:/images/hd/logo/TribalHD-splash.jpg
-splash_screen_fhd=pkg:/images/fhd/logo/TribalFHD-splash.jpg
+splash_screen_sd=pkg:/images/sd/logo/TribalSD-splash.png
+splash_screen_hd=pkg:/images/hd/logo/TribalHD-splash.png
+splash_screen_fhd=pkg:/images/fhd/logo/TribalFHD-splash.png
 splash_color=#01779a
-splash_min_time=2000
+splash_min_time=2500
 
 #Resolutions
 ui_resolutions = fhd
