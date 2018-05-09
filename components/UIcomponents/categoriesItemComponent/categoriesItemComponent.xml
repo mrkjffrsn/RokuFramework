@@ -16,7 +16,6 @@
 
      <children>
         <poster id="pstrCategory" width="378" height="607" />
-        <label id="lblText" color="#000000ff" />
      </children>
 
 </component>

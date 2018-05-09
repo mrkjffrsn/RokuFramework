@@ -4,22 +4,22 @@
     {
       "id": "category-1",
       "title": "Lunch & learn",
-      "imageUrl": "pkg:/images/fhd/home/lunch.jpeg"
+      "imageUrl": "pkg:/images/fhd/home/img-lunchandlearn.png"
     },
     {
       "id": "category-2",
       "title": "Lightning Talks",
-      "imageUrl": "pkg:/images/fhd/home/lunch.jpeg"
+      "imageUrl": "pkg:/images/fhd/home/img-lightningtalks.png"
     },
     {
       "id": "category-3",
       "title": "Demos",
-      "imageUrl": "pkg:/images/fhd/home/lunch.jpeg"
+      "imageUrl": "pkg:/images/fhd/home/img-demos.png"
     },
     {
       "id": "category-4",
       "title": "Social",
-      "imageUrl": "pkg:/images/fhd/home/lunch.jpeg"
+      "imageUrl": "pkg:/images/fhd/home/img-social.png"
     }
   ]
 }

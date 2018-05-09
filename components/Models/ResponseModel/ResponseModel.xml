@@ -1,4 +1,6 @@
 <component name="ResponseModel" extends="BaseModel">
+  
+  <script type="text/brightscript" uri="pkg:/components/Models/ResponseModel/responseModel.brs" />
 
   <interface>
       <field id="errorStatus" type="boolean" />
