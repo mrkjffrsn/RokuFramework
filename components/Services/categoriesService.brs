@@ -10,9 +10,10 @@ function categoriesService()
 
         data = ParseJson(ReadAsciiFile("pkg:/data/categories.json"))
 
-        model = CategoriesModel( data )
-        categoriesData = model.createContentNode()
-        callback( categoriesData, params )
+        model = CreateObject("roSGNode", "CategoriesModel")
+        model.callfunc("parseData", data )
+
+        callback( model, params )
       end function
     }
 

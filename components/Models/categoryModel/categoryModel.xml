@@ -1,4 +1,4 @@
-<component name="CategoryModel" extends="ContentNode" >
+<component name="CategoryModel" extends="BaseModel" >
 
   <interface>
       <field id="imageUrl" type="string" />

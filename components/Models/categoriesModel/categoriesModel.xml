@@ -1,0 +1,5 @@
+<component name="CategoriesModel" extends="BaseModel">
+
+  <script type="text/brightscript" uri="pkg:/components/Models/categoriesModel/categoriesModel.brs" />
+
+</component>

@@ -1,0 +1,11 @@
+<component name="ResponseModel" extends="BaseModel">
+
+  <interface>
+      <field id="errorStatus" type="boolean" />
+      <field id="code" type="integer" />
+      <field id="msg" type="string" />
+      <field id="data" type="node" />
+      <field id="request" type="assocarray" />
+  </interface>
+
+</component>
