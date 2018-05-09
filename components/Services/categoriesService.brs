@@ -8,12 +8,9 @@ function categoriesService()
 
       getCategories: function( callback as function, params = invalid as Object )
 
-        data = ParseJson(ReadAsciiFile("pkg:/data/categories.json"))
-
-        model = CreateObject("roSGNode", "CategoriesModel")
-        model.callfunc("parseData", data )
-
+        model = fileClient().getData( "pkg:/data/categories.json", "CategoriesModel" )
         callback( model, params )
+
       end function
     }
 

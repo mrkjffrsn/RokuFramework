@@ -8,8 +8,15 @@ function fileClient()
 
       m.fileClient = {
 
-        getData: function( fileURI as String ) as Dynamic
-            return ReadAsciiFile( fileURI )
+        getData: function( fileURI as String, modelType as String ) as Dynamic
+
+          data = ParseJson(ReadAsciiFile( fileURI ))
+
+          model = CreateObject("roSGNode", modelType)
+          model.callfunc("parseData", data )
+
+          return model
+
         end function
       }
 
