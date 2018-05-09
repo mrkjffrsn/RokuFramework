@@ -21,7 +21,6 @@ end function
 ' @param Object data
 ' @param Object callback parameters'
 function onCategoriesDataLoad( data, params )
-
   rowListData = CreateObject( "roSGNode", "ContentNode" )
   rowListData.appendChild( data )
 

@@ -11,5 +11,4 @@ function parseData( data )
     if ( isValid( data.imageUrl ) ) then m.top.imageUrl = data.imageUrl
 
   end if
-
 end function
