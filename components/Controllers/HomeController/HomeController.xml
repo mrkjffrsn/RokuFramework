@@ -1,22 +1,8 @@
 <component name="HomeController" extends="BaseController">
 
   <script type="text/brightscript" uri="pkg:/components/Controllers/HomeController/HomeController.brs" />
-  <script type="text/brightscript" uri="pkg:/components/Services/categoriesService.brs" />
 
   <children>
-
-    <!-- Rectangle Background -->
-    <Rectangle id="background" width="1920" height="1080" color="#FFFFFFFF" />
-
-    <!-- Menu Component -->
-    <Menu id="menu" />
-
-    <!-- Categories Component -->
-    <RowList id="rwlstCategories" itemComponentName="CategoriesItemComponent" translation="[148, 236]"
-       itemSize="[1660, 700]" rowItemSpacing="[[37,0]]" rowItemSize="[[378, 607]]" focusBitmapBlendColor="#4a90e2ff" />
-
-    <!-- Shawdow Poster -->
-    <Poster id="homeShadow" uri="pkg:/images/fhd/home/homeShadow.png" translation="[0, 931]" />
 
   </children>
 

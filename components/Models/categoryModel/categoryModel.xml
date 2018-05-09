@@ -1,9 +1,0 @@
-<component name="CategoryModel" extends="BaseModel" >
-
-  <script type="text/brightscript" uri="pkg:/components/Models/categoryModel/categoryModel.brs" />
-
-  <interface>
-      <field id="imageUrl" type="string" />
-  </interface>
-
-</component>
