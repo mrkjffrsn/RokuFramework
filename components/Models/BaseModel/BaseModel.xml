@@ -1,0 +1,8 @@
+<component name="BaseModel" extends="ContentNode">
+  <script type="text/brightscript" uri="pkg:/source/Utils/generalUtils.brs" />
+
+  <interface>
+    <function name="parseData" />
+  </interface>
+
+</component>

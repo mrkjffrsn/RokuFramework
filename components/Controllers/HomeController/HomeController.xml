@@ -4,9 +4,6 @@
 
   <children>
 
-    <!-- Load the homepage menu -->
-    <Label text="HomePage" />
-
   </children>
 
 </component>

@@ -1,0 +1,13 @@
+<component name="ResponseModel" extends="BaseModel">
+  
+  <script type="text/brightscript" uri="pkg:/components/Models/ResponseModel/responseModel.brs" />
+
+  <interface>
+      <field id="errorStatus" type="boolean" />
+      <field id="code" type="integer" />
+      <field id="msg" type="string" />
+      <field id="data" type="node" />
+      <field id="request" type="assocarray" />
+  </interface>
+
+</component>

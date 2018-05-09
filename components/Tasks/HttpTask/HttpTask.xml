@@ -7,7 +7,7 @@
 
   <interface>
     <field id="request" type="assocarray" />
-    <field id="response" type="assocarray" />
+    <field id="response" type="node" />
   </interface>
 
 </component>

@@ -4,17 +4,17 @@ function init()
 
 end function
 
-function onNavigateTo( params as Object )
+' LIFE CYCLE METHODS '
 
-  getHomePageData()
+function onNavigateTo( params as Object )
 
 end function
 
 function onNavigateAway( params as Object )
-
 end function
 
-' PAGE METHODS '
+
+' PAGE HELPER METHODS '
 
 ' Get sample data'
 function getHomePageData()
@@ -34,7 +34,7 @@ function getHomePageData()
 
   m.http.sendRequest( request )
 
-end function
+ end function
 
 ' Homepage callback'
 function onHomePageLoad( data, params )

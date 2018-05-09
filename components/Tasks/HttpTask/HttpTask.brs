@@ -71,8 +71,8 @@ function handleHTTPRequest( event )
       job = { httpTransfer: httpTransfer, request: request }
       m.jobs[identity.toStr()] = job
   else
-      error = { error: true, code: 10, msg: "Failed to create request for : " + request.url, request: request }
-      m.top.response = error
+      error = { error: true, code: 10, msg: "Failed to create request for : " + request.url, request: request, data: invalid }
+      m.top.response = createResponseModel( error )
   end if
 
 end function
@@ -92,18 +92,20 @@ function handleHTTPResponse( event )
 
       if ((code >= 200) and (code < 300) and isValid(job))
 
+          ' TODO: Add xml parsing
+
           body = event.GetString()
-
-          ' TODO: Add xml parsing'
           data = ParseJson(body)
+          model = convertToModel( data, job.request.modelType )
 
-          m.top.response = { error: false, code: code, data: data, request: job.request }
+          response = { error: false, code: code, data: model, request: job.request, msg: "" }
+          m.top.response = createResponseModel( response )
 
           m.jobs.Delete(identity.toStr())
       else
 
-        error = { error: true, code: code, msg: event.GetFailureReason(), request: job.request }
-        m.top.response = error
+        error = { error: true, code: code, msg: event.GetFailureReason(), request: job.request, data: invalid }
+        m.top.response = createResponseModel( error )
 
         m.jobs.Delete(identity.toStr())
       end if
@@ -168,4 +170,37 @@ function createQueryString( data as Object, includeQuery as Boolean, encodeData 
   end if
 
   return queryString
+end function
+
+
+' Converts objects to data models'
+' @param data
+' @param parser parser details
+' @return object ContentNode model object
+function convertToModel( data as Object, modelType as String ) as Object
+
+  model = CreateObject( "roSGNode", modelType )
+
+  if ( not isValid( model ) )
+    model = CreateObject( "roSGNode", "BaseModel" )
+  end if
+
+  model.callfunc( "parseData", data )
+
+  return model
+end function
+
+' Creates a response model
+' @param Object
+' @return Object ContentNode'
+function createResponseModel( response as Object ) as Object
+
+  responseModel = CreateObject("roSGNode", "ResponseModel")
+  responseModel.error = response.error
+  responseModel.code = response.code
+  responseModel.data = response.data
+  responseModel.msg = response.msg
+  responseModel.request = response.request
+
+  return responseModel
 end function
