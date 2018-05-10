@@ -7,7 +7,7 @@ function onLoad( event as Object )
 
   initiateNavigationAway( m.top.currentController )
 
-  if ( (not isValid(pageInfo.ignoreOnBack)) or (isValid(pageInfo.ignoreOnBack) and not pageInfo.ignoreOnBack) )
+  if ( (not isValid(pageInfo.skipHistory)) or (isValid(pageInfo.skipHistory) and not pageInfo.skipHistory) )
     m.navigationStack.push( pageInfo )
   end if
 
@@ -40,11 +40,11 @@ function attachController( pageInfo as Object )
 
     if (isValid(controller))
 
-      controller.onNavigationEvent = { type: constants.NAVIGATION_TYPES.NAVIGATE_TO, params: pageInfo.params }
+      m.controllerView.removeChildIndex(0)
+      m.controllerView.insertChild( controller, 0 )
 
-      m.controllerView.removeChildIndex(1)
-      m.controllerView.insertChild( controller, 1 )
       m.top.currentController = controller
+      controller.onNavigationEvent = { type: constants.NAVIGATION_TYPES.NAVIGATE_TO, params: pageInfo.params }
 
     end if
 end function
@@ -63,5 +63,13 @@ end function
 ' Returns the next page params. If no page, then returns invalid'
 '@return Object'
 function getNextPageInfo() as Object
-  return m.navigationStack.pop()
+
+  nextController = m.navigationStack.pop()
+
+  ' if the next controller is the same as the current controller. Then pick the next controller from stack again.
+  if ( m.top.currentController.id = nextController.page )
+    nextController = m.navigationStack.pop()
+  end if
+
+  return nextController
 end function

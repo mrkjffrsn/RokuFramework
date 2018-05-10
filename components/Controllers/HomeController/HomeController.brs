@@ -8,9 +8,12 @@ end function
 
 function onNavigateTo( params as Object )
 
+  applyFocus( m.top, true, "onNavigateTo() - HomeController.brs" )
+
 end function
 
-function onNavigateAway( params as Object )
+function onNavigateAway()
+  
 end function
 
 
