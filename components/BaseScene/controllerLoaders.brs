@@ -68,7 +68,7 @@ function getNextPageInfo() as Object
 
   ' if the next controller is the same as the current controller. Then pick the next controller from stack again.
   if ( m.top.currentController.id = nextController.page )
-    nextController = m.navigationStack.pop()
+    nextController = m.navigationStack.peek()
   end if
 
   return nextController
