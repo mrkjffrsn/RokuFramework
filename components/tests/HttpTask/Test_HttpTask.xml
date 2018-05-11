@@ -1,0 +1,11 @@
+<component name="Test__HttpTask" extends="HttpTask">
+
+	<interface>
+		<function name="TestFramework__RunNodeTests"/>
+	</interface>
+
+	<script type="text/brightscript" uri="pkg:/source/testFramework/UnitTestFramework.brs"/>
+
+	<script type="text/brightscript" uri="pkg:/components/tests/HttpTask/Test__HttpTask__TestSuite.brs"/>
+
+</component>

@@ -1,4 +1,4 @@
-<component name="Test__HomeController" extends="HomeController">
+<component name="Test__BaseController" extends="BaseController">
 
 	<interface>
 		<function name="TestFramework__RunNodeTests"/>
@@ -6,6 +6,6 @@
 
 	<script type="text/brightscript" uri="pkg:/source/testFramework/UnitTestFramework.brs"/>
 
-	<script type="text/brightscript" uri="pkg:/components/tests/Test__HomeController__TestSuite.brs"/>
+	<script type="text/brightscript" uri="pkg:/components/tests/BaseController/Test__BaseController__TestSuite.brs"/>
 
 </component>
