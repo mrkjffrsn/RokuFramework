@@ -21,3 +21,4 @@ splash_min_time=2500
 
 #Resolutions
 ui_resolutions=fhd
+uri_resolution_autosub=$$res$$,sd,hd,fhd
