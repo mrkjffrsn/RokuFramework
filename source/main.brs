@@ -22,6 +22,12 @@ function Main(args as Dynamic)
   if ( args.RunTests = "true" and (isValid(TestRunner) and type(TestRunner) = "Function") )
       Runner = TestRunner()
       Runner.logger.SetVerbosity(1)
+
+      if (isValid(args.ip))
+        Runner.logger.ip = args.ip
+      end if
+
+      Runner.logger.printStatistic = printTestStatistics
       Runner.Run()
   end if
 
@@ -46,4 +52,22 @@ function mainEventLoop( port )
 
   end while
 
+end function
+
+
+function printTestStatistics( stats as Object )
+
+  state = "fail"
+  if ( stats.crash = 0 and stats.fail = 0 ) then state = "success"
+
+  if (isValid(m.ip))
+    http = CreateObject("roUrlTransfer")
+    http.setRequest( "GET" )
+    http.setUrl("http://"+m.ip+":3000/rokuTests?state="+state)
+    data = http.GetToString()
+  else
+    print "*************** Test Result : " + state + " ******************* "
+    print "Results Object : "; stats
+    print "To know more about which testsuite failed, please inspect the stats object"
+  end if
 end function

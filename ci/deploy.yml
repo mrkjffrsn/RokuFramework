@@ -1,0 +1,19 @@
+---
+platform: darwin
+inputs:
+  - name: git-roku-guidelines-repo
+outputs:
+  - name: output
+run:
+  path: sh
+  args:
+    - -exc
+    - |
+      cd git-roku-guidelines-repo
+      make install
+      cd ..
+      cp -R git-roku-guidelines-repo/dist/apps/ output/
+      systemIp=`ifconfig |  grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | sed -n 1p`
+      cd git-roku-guidelines-repo
+      curl -d "" "http://$ROKU_DEV_TARGET:8060/launch/dev?RunTests=true&ip=$systemIp"
+      node app.js

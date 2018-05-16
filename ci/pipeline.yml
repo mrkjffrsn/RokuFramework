@@ -1,0 +1,51 @@
+resources:
+  - name: git-roku-guidelines-repo
+    type: git
+    source:
+      branch: develop
+      private_key: ((github-private-key))
+      uri: git@github.com:TribalScale/roku-guidelines.git
+  - name: roku-guidelines-s3-zip
+    type: s3
+    source:
+      bucket: roku-guidelines-app
+      access_key_id: ((s3-access-key))
+      region_name: ((s3-region))
+      secret_access_key: ((s3-secret-key))
+      regexp: roku_guidelines_(.*).zip
+  - name: roku-guidelines-s3-pkg
+    type: s3
+    source:
+      bucket: roku-guidelines-app
+      access_key_id: ((s3-access-key))
+      region_name: ((s3-region))
+      secret_access_key: ((s3-secret-key))
+      regexp: roku_guidelines_(.*).pkg
+
+jobs:
+  - name: package-roku-guidelines-app
+    plan:
+      - get: git-roku-guidelines-repo
+      - task: package
+        file: git-roku-guidelines-repo/ci/package.yml
+        params:
+          ROKU_DEV_TARGET: ((roku-dev-device-ip))
+          DEVPASSWORD: ((roku-dev-password))
+          APP_KEY_PASS: ((roku-app-key))
+      - put: roku-guidelines-s3-pkg
+        params:
+          file: output/roku_guidelines_*.pkg
+
+  - name: deploy-roku-guidelines-apps
+    plan:
+      - get: git-roku-guidelines-repo
+        trigger: true
+      - task: deploy
+        file: git-roku-guidelines-repo/ci/deploy.yml
+        params:
+          ROKU_DEV_TARGET: ((roku-dev-device-ip))
+          DEVPASSWORD: ((roku-dev-password))
+          APP_KEY_PASS: ((roku-app-key))
+      - put: roku-guidelines-s3-zip
+        params:
+          file: output/roku_guidelines_*.zip
