@@ -1,3 +1,5 @@
+[![Status](https://travis-ci.org/rstacruz/REPO.svg?branch=master)](https://travis-ci.org/rstacruz/REPO)
+
 # roku-guidelines-app
 
 The roku-guidelines-app really is a simple framework for building Roku applications rapidly. It contains most modules necessary
