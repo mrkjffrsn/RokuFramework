@@ -1,4 +1,4 @@
-[![Status](http://ci.tribalscale.com/api/v1/teams/main/pipelines/roku-guidelines-pipeline/jobs/deploy-roku-guidelines-apps/badge)](http://ci.tribalscale.com/api/v1/teams/main/pipelines/roku-guidelines-pipeline/jobs/deploy-roku-guidelines-apps/badge)
+![Status](http://ci.tribalscale.com/api/v1/teams/main/pipelines/roku-guidelines-pipeline/jobs/deploy-roku-guidelines-apps/badge)
 
 # roku-guidelines-app
 
