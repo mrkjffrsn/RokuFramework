@@ -1,8 +1,3 @@
-![Status](https://ci.tribalscale.com/api/v1/teams/main/pipelines/roku-guidelines-pipeline/jobs/deploy-roku-guidelines-apps/badge)
-
-<img src="https://ci.tribalscale.com/api/v1/teams/main/pipelines/roku-guidelines-pipeline/jobs/deploy-roku-guidelines-apps/badge"
-     alt="Build Status" />
-
 # roku-guidelines-app
 
 The roku-guidelines-app really is a simple framework for building Roku applications rapidly. It contains most modules necessary
