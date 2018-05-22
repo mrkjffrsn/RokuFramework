@@ -13,7 +13,7 @@ function onNavigateTo( params as Object )
 end function
 
 function onNavigateAway()
-  
+
 end function
 
 

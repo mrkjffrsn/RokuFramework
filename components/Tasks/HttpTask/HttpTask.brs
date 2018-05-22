@@ -48,6 +48,10 @@ function handleHTTPRequest( event )
       httpTransfer.initClientCertificates()
   end if
 
+  if ( isValid(request.queryParams) )
+      request.url += createQueryString( request.queryParams, true, true )
+  end if
+
   httpTransfer.setHeaders( request.headers )
   httpTransfer.enableEncodings( true )
   httpTransfer.retainBodyOnError( true )

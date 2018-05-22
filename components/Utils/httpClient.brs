@@ -76,11 +76,13 @@ function createRequestQuery( req as Object ) as Dynamic
 
   method = HTTP_TYPES.GET
   headers = {}
+  queryParams = invalid
   data = invalid
   modelType = "BaseModel"
 
   if (isValid( req.method )) then method = req.method
   if (isValid( req.headers )) then headers.append( req.headers )
+  if (isValid( req.queryParams )) then queryParams = req.queryParams
   if (isValid( req.data )) then data = req.data
   if (isValid( req.modelType )) then modelType = req.modelType
 
@@ -88,6 +90,7 @@ function createRequestQuery( req as Object ) as Dynamic
     requestQuery = {
       url: req.url,
       headers: headers,
+      queryParams: queryParams,
       data: data,
       method: method,
       id: generateUUID(),
