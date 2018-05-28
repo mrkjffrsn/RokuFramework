@@ -6,6 +6,7 @@
   <script type="text/brightscript" uri="pkg:/components/Utils/focusUtils.brs" />
   <script type="text/brightscript" uri="pkg:/components/Utils/httpClient.brs" />
   <script type="text/brightscript" uri="pkg:/components/Utils/fileClient.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Utils/registryClient.brs" />
   <script type="text/brightscript" uri="pkg:/source/Utils/generalUtils.brs" />
   <script type="text/brightscript" uri="pkg:/source/constants.brs" />
 

@@ -1,0 +1,13 @@
+<component name="RegistryTask" extends="Task" >
+
+  <script type="text/brightscript" uri="pkg:/components/Tasks/RegistryTask/RegistryTask.brs" />
+  <script type="text/brightscript" uri="pkg:/source/Utils/generalUtils.brs" />
+  <script type="text/brightscript" uri="pkg:/source/constants.brs" />
+
+  <interface>
+    <field id="action" type="string" />
+    <field id="data" type="assocarray" />
+    <field id="response" type="assocarray" />
+  </interface>
+
+</component>
