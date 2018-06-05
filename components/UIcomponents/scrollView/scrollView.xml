@@ -1,0 +1,29 @@
+<component name="scrollView" extends="baseUIComponent" >
+
+  <script type="text/brightscript" uri="pkg:/components/UIComponents/scrollView/scrollView.brs" />
+
+  <interface>
+    <field id="viewport" type="floatarray" value="[800, 400]" onChange="onViewportChange" />
+    <field id="padding" type="floatarray" value="[ 0 ]" onChange="onPaddingChange" />
+    <field id="children" type="nodearray" onChange="onChildrenChange" />
+  </interface>
+
+  <children>
+
+    <LayoutGroup id="scrollContainer" />
+
+    <!-- Non Renderable Nodes -->
+
+    <Animation id="scrollAnimation"
+           duration="0.3"
+           repeat="false" >
+        <Vector2DFieldInterpolator id="scrollTranslation"
+            key="[0.0, 1.0]"
+            fieldToInterp="scrollContainer.translation" />
+    </Animation>
+
+    <Timer id="scrollTimer" duration="0.5" repeat="true" />
+
+  </children>
+
+</component>
