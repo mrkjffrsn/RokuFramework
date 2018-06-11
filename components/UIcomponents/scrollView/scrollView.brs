@@ -9,6 +9,8 @@ function init()
   m.scrollTranslation = m.scrollAnimation.findNode("scrollTranslation")
   m.scrollTimer = m.top.findNode("scrollTimer")
 
+  m.scrollAnimation.optional = isLowEndDevice()
+
   m.scrollTimer.observeField("fire", "fireScroller")
 
   m.keyPressedState = invalid
@@ -86,15 +88,24 @@ function onChildrenChange( event as Object )
 
   children = event.getData()
 
-  m.scrollContainer.appendChildren( children )
+  yPos = 0
+
+  for each child in children
+
+    child.translation = [ 0, yPos ]
+    m.scrollContainer.appendChild( child )
+
+    index = m.scrollContainer.getChildCount()
+    padding = paddingForIndex(index)
+    bounds = child.boundingRect()
+    yPos = yPos + bounds.height + padding
+
+  end for
 
 end function
 
 function onPaddingChange( event as Object )
-
   padding = event.getData()
-
-  m.scrollContainer.itemSpacings = padding
 end function
 
 function fireScroller( event as Object )
@@ -128,11 +139,7 @@ function animateView( key as String, scrollItemCount as Integer ) as Integer
     indexDirection = -1
   end if
 
-  padding = m.top.padding[m.top.padding.count() - 1]
-
-  if ( not (m.currentIndex >= m.top.padding.count()) )
-   padding = m.top.padding[m.currentIndex]
-  end if
+  padding = paddingForIndex(m.currentIndex)
 
   if ( m.scrollAnimation.state = "running" )
     m.scrollAnimation.control = "finish"
@@ -165,4 +172,15 @@ function setFocusOnChild( child as Object, log = "" as String )
 
   return status
 
+end function
+
+function paddingForIndex(index as Integer) as float
+
+padding = m.top.padding[m.top.padding.count() - 1]
+
+if ( not (index >= m.top.padding.count()) )
+ padding = m.top.padding[m.currentIndex]
+end if
+
+return padding
 end function

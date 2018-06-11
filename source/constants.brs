@@ -23,7 +23,13 @@ function GetConstants()
         POST: "POST",
         DELETE: "DELETE",
         PUT: "PUT"
-      }
+      },
+
+      REGISTRY_ACTION_TYPES: {
+        READ: "READ",
+        WRITE: "WRITE",
+        DELETE: "DELETE"
+      },
 
       LOW_END_DEVICE: {
         "2400x": true,

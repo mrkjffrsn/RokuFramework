@@ -10,7 +10,7 @@
 
   <children>
 
-    <LayoutGroup id="scrollContainer" />
+    <Group id="scrollContainer" />
 
     <!-- Non Renderable Nodes -->
 
