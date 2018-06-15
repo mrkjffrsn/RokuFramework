@@ -139,7 +139,7 @@ function animateView( key as String, scrollItemCount as Integer ) as Integer
     indexDirection = -1
   end if
 
-  padding = paddingForIndex(m.currentIndex)
+  padding = paddingForIndex(m.currentIndex + direction)
 
   if ( m.scrollAnimation.state = "running" )
     m.scrollAnimation.control = "finish"
@@ -176,11 +176,11 @@ end function
 
 function paddingForIndex(index as Integer) as float
 
-padding = m.top.padding[m.top.padding.count() - 1]
+  padding = m.top.padding[m.top.padding.count() - 1]
 
-if ( not (index >= m.top.padding.count()) )
- padding = m.top.padding[m.currentIndex]
-end if
+  if ( not (index >= m.top.padding.count()) )
+   padding = m.top.padding[index]
+  end if
 
-return padding
+  return padding
 end function

@@ -3,7 +3,7 @@
   <script type="text/brightscript" uri="pkg:/components/UIComponents/scrollView/scrollView.brs" />
 
   <interface>
-    <field id="viewport" type="floatarray" value="[800, 400]" onChange="onViewportChange" />
+    <field id="viewport" type="floatarray" value="[800, 400]" alwaysNotify="true" onChange="onViewportChange" />
     <field id="padding" type="floatarray" value="[ 0 ]" onChange="onPaddingChange" />
     <field id="children" type="nodearray" onChange="onChildrenChange" />
   </interface>
