@@ -1,4 +1,4 @@
-<component name="Test__HttpTask" extends="HttpTask">
+<component name="Test__ScrollView" extends="ScrollView">
 
 	<interface>
 		<function name="TestFramework__RunNodeTests"/>
@@ -6,6 +6,6 @@
 
 	<script type="text/brightscript" uri="pkg:/source/testFramework/UnitTestFramework.brs"/>
 
-	<script type="text/brightscript" uri="pkg:/components/tests/HttpTask/Test__HttpTask__TestSuite.brs"/>
+	<script type="text/brightscript" uri="pkg:/components/tests/UIComponents/scrollView/Test__ScrollView__TestSuite.brs"/>
 
 </component>
