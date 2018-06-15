@@ -2,6 +2,7 @@
 <component name="baseUIComponent" extends="Group">
 
   <script type="text/brightscript" uri="pkg:/components/Utils/sceneUtils.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Utils/buttonUtils.brs" />
   <script type="text/brightscript" uri="pkg:/source/Utils/generalUtils.brs" />
   <script type="text/brightscript" uri="pkg:/source/constants.brs" />
 

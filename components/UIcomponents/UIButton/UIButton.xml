@@ -1,0 +1,19 @@
+<component name="UIButton" extends="baseUIComponent">
+
+  <script type="text/brightscript" uri="pkg:/components/UIComponents/UIButton/UIButton.brs" />
+
+  <interface>
+     <field id="state" type="string" onchange="renderStateImage" />
+     <field id="stateImages" type="assocarray" onChange="onStateImagesChange" />
+     <field id="size" type="vector2d" value="[ 96, 96 ]" alwaysNotify="true" onchange="onSizeChange" />
+     <field id="pressed" value="false" type="boolean" onChange="updateButtonState" />
+     <field id="enabled" type="boolean" value="true" onChange="updateButtonState" />
+  </interface>
+
+  <children>
+
+    <Poster id="pstrStateImage" />
+
+  </children>
+
+</component>

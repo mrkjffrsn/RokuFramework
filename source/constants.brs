@@ -47,6 +47,14 @@ function GetConstants()
         "3700x": true,
         "3710x": true,
         "5000x": true
+      },
+
+      UI_BUTTON_STATES: {
+        FOCUSED: "focused",
+        UNFOCUSED: "unfocused",
+        PRESSED_FOCUSED: "pressed_focused",
+        PRESSED_UNFOCUSED: "pressed_unfocused",
+        DISABLED: "disabled"
       }
 
     }
