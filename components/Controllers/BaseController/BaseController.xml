@@ -13,6 +13,7 @@
 
   <interface>
       <field id="onNavigationEvent" type="assocarray" alwaysNotify="true" onChange="onNavigationEvent" />
+      <field id="controllerState" type="assocarray" />
   </interface>
 
   <children>
