@@ -14,7 +14,7 @@ function init()
   m.scrollTimer.observeField("fire", "fireScroller")
 
   m.keyPressedState = invalid
-  m.currentIndex = 0
+  m.top.currentIndex = 0
 end function
 
 
@@ -47,7 +47,7 @@ function onKeyEvent( key as String, press as Boolean )
       m.keyPressedState = LCase(key)
       scrollItemCount = m.scrollContainer.getChildCount()
 
-      if ( not ((m.currentIndex = scrollItemCount - 1 AND m.keyPressedState = "down") OR (m.currentIndex = 0 AND m.keyPressedState = "up")) AND scrollItemCount > 0)
+      if ( not ((m.top.currentIndex = scrollItemCount - 1 AND m.keyPressedState = "down") OR (m.top.currentIndex = 0 AND m.keyPressedState = "up")) AND scrollItemCount > 0)
         moveScrollView()
         m.scrollTimer.control = "start"
 
@@ -57,7 +57,7 @@ function onKeyEvent( key as String, press as Boolean )
   else
     m.scrollTimer.control = "stop"
 
-    currentChild = m.top.children[ m.currentIndex ]
+    currentChild = m.top.children[ m.top.currentIndex ]
     setFocusOnChild( currentChild, "onKeyEvent() - " )
 
     handled = true
@@ -112,6 +112,26 @@ function fireScroller( event as Object )
   moveScrollView()
 end function
 
+function onScrollTo( event as Object )
+
+  index = event.getData()
+  scrollItemCount = m.scrollContainer.getChildCount()
+
+  if ( (index < (scrollItemCount - 1)) AND (index > -1) )
+
+    keyPressedState = "up"
+    if ( index > m.top.currentIndex ) then keyPressedState = "down"
+
+    iterations = Abs(m.top.currentIndex - index )
+
+    while ( iterations <> 0 )
+      animateView( keyPressedState, scrollItemCount )
+      iterations = iterations - 1
+    end while
+
+  end if
+end function
+
 '***** HELPERS *****'
 
 ' Moves the scrollview up or down based on the set direction
@@ -119,7 +139,7 @@ function moveScrollView()
 
   scrollItemCount = m.scrollContainer.getChildCount()
 
-  if ( not ((m.currentIndex = scrollItemCount - 1 AND m.keyPressedState = "down") OR (m.currentIndex = 0 AND m.keyPressedState = "up")) AND scrollItemCount > 0)
+  if ( not ((m.top.currentIndex = scrollItemCount - 1 AND m.keyPressedState = "down") OR (m.top.currentIndex = 0 AND m.keyPressedState = "up")) AND scrollItemCount > 0)
     animateView( m.keyPressedState, scrollItemCount )
   end if
 
@@ -139,21 +159,21 @@ function animateView( key as String, scrollItemCount as Integer ) as Integer
     indexDirection = -1
   end if
 
-  padding = paddingForIndex(m.currentIndex + direction)
+  padding = paddingForIndex(m.top.currentIndex + direction)
 
   if ( m.scrollAnimation.state = "running" )
     m.scrollAnimation.control = "finish"
   end if
 
-  displacmentY = m.scrollContainer.getChild( m.currentIndex + indexDirection ).boundingRect().height + padding
+  displacmentY = m.scrollContainer.getChild( m.top.currentIndex + indexDirection ).boundingRect().height + padding
   newTranslation = [ 0,  m.scrollContainer.translation[1] - (displacmentY * direction) ]
 
   m.scrollTranslation.keyValue = [ m.scrollContainer.translation, newTranslation ]
   m.scrollAnimation.control = "start"
 
-  m.currentIndex = m.currentIndex + direction
+  m.top.currentIndex = m.top.currentIndex + direction
 
-  return m.currentIndex
+  return m.top.currentIndex
 
 end function
 
