@@ -1,3 +1,4 @@
+
 '*********** Controller Load and Unload parameters *************'
 
 function onLoad( event as Object )
@@ -6,9 +7,7 @@ function onLoad( event as Object )
 
   initiateNavigationAway( m.top.currentController, m.navigationStack.Count() > 0 )
 
-  if ( (not isValid(pageInfo.skipHistory)) or (isValid(pageInfo.skipHistory) and not pageInfo.skipHistory) )
-    m.navigationStack.push( pageInfo )
-  end if
+  m.navigationStack.push( pageInfo )
 
   attachController( pageInfo )
 end function
@@ -69,12 +68,13 @@ end function
 '@return Object'
 function getNextPageInfo() as Object
 
-  nextController = m.navigationStack.pop()
+  m.navigationStack.pop()
+  nextController = m.navigationStack.peek()
 
-  'if the next controller is the same as the current controller. Then pick the next controller from stack again.
-  if ( isValid(nextController) AND m.top.currentController.id = nextController.page )
+  while ( isValid( nextController ) AND isValid( nextController.skipHistory ) AND ( nextController.skipHistory = true ) )
+    m.navigationStack.pop()
     nextController = m.navigationStack.peek()
-  end if
+  end while
 
   return nextController
 end function
