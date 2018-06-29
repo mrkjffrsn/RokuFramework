@@ -6,6 +6,8 @@
     <field id="viewport" type="floatarray" value="[800, 400]" alwaysNotify="true" onChange="onViewportChange" />
     <field id="padding" type="floatarray" value="[ 0 ]" onChange="onPaddingChange" />
     <field id="children" type="nodearray" onChange="onChildrenChange" />
+    <field id="scrollTo" type="integer" onChange="onScrollTo" />
+    <field id="currentIndex" type="integer" />
   </interface>
 
   <children>
