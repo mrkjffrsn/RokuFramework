@@ -1,11 +1,10 @@
-
 '*********** Controller Load and Unload parameters *************'
 
 function onLoad( event as Object )
 
   pageInfo = event.getData()
 
-  initiateNavigationAway( m.top.currentController )
+  initiateNavigationAway( m.top.currentController, m.navigationStack.Count() > 0 )
 
   if ( (not isValid(pageInfo.skipHistory)) or (isValid(pageInfo.skipHistory) and not pageInfo.skipHistory) )
     m.navigationStack.push( pageInfo )
@@ -29,6 +28,7 @@ function onUnLoad( event as Object )
       attachController( pageInfo )
     end if
   end if
+
 end function
 
 
@@ -49,14 +49,19 @@ function attachController( pageInfo as Object )
     end if
 end function
 
-function initiateNavigationAway( currentController )
+function initiateNavigationAway( currentController, saveState = false as Boolean )
 
   constants = GetConstants()
 
-  'TODO:Figure out a way to update state values of pageParams'
-
   if (isValid(currentController))
+
     currentController.onNavigationEvent = { type: constants.NAVIGATION_TYPES.NAVIGATE_AWAY }
+
+    if ( saveState AND isValid( currentController.controllerState ) )
+      pageInfo = m.navigationStack.peek()
+      if ( pageInfo.page = currentController.id ) then pageInfo.params[ "controllerState" ] = currentController.controllerState
+    end if
+
   end if
 end function
 
@@ -66,10 +71,15 @@ function getNextPageInfo() as Object
 
   nextController = m.navigationStack.pop()
 
-  ' if the next controller is the same as the current controller. Then pick the next controller from stack again.
-  if ( m.top.currentController.id = nextController.page )
+  'if the next controller is the same as the current controller. Then pick the next controller from stack again.
+  if ( isValid(nextController) AND m.top.currentController.id = nextController.page )
     nextController = m.navigationStack.peek()
   end if
 
   return nextController
+end function
+
+' Clears out the navigation stack
+function clearNavigationStack()
+  m.navigationStack = []
 end function
