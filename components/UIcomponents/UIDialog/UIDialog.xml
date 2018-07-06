@@ -1,0 +1,17 @@
+<component name="uiDialog" extends="baseUIComponent" >
+
+  <script type="text/brightscript" uri="pkg:/components/UIComponents/UIDialog/UIDialog.brs" />
+
+  <interface>
+     <field id="parentFocusItem" type="node" />
+     <field id="close" type="boolean" onChange="onClose" />
+     <field id="dialogSize" type="vector2d" value="[400, 300]" onChange="onDialogSizeChange" />
+  </interface>
+
+  <children>
+
+    <Rectangle id="baseRect" color="#FFFFFF" width="400" height="300" translation="[0,0]" />
+
+  </children>
+
+</component>
