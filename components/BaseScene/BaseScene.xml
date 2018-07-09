@@ -3,6 +3,7 @@
 
   <script type="text/brightscript" uri="pkg:/components/BaseScene/BaseScene.brs" />
   <script type="text/brightscript" uri="pkg:/components/BaseScene/controllerLoaders.brs" />
+  <script type="text/brightscript" uri="pkg:/components/Utils/sceneUtils.brs" />
   <script type="text/brightscript" uri="pkg:/source/Utils/generalUtils.brs" />
   <script type="text/brightscript" uri="pkg:/source/constants.brs" />
   <script type="text/brightscript" uri="pkg:/source/Factories/controllerFactory.brs" />
@@ -20,7 +21,8 @@
     <!-- Controller View -->
     <Group id="controllerView"> </Group>
 
-    <!-- Dialog View : May be in the future -->
+    <!-- Dialog Holder -->
+    <Group id="dialogContainer" translation="[0, 0]" />
 
   </children>
 
