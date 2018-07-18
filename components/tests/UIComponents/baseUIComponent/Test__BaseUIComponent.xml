@@ -1,0 +1,11 @@
+<component name="Test__BaseUIComponent" extends="baseUIComponent">
+
+	<interface>
+		<function name="TestFramework__RunNodeTests"/>
+	</interface>
+
+	<script type="text/brightscript" uri="pkg:/source/testFramework/UnitTestFramework.brs"/>
+
+	<script type="text/brightscript" uri="pkg:/components/tests/UIComponents/baseUIComponent/Test__BaseUIComponent__TestSuite.brs"/>
+
+</component>
