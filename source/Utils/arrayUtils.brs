@@ -65,6 +65,10 @@ function arrayReduce( array, intialValue, transform )
   return returnValue
 end function
 
+' Filters the array based on the transform function
+' @param array  the array of elements
+' @param function transformation method
+' @return array
 function arrayFilter(array, filter)
 
   returnValue = []
@@ -76,4 +80,22 @@ function arrayFilter(array, filter)
   end for
 
   return returnValue
+end function
+
+' Slices the given array
+' @param object array
+' @param int start index
+' @param int end index
+function arraySlice( array as Object, startIndex = 0 as Integer, endIndex = 0 as Integer )
+
+  slicedArray = []
+
+  if ( startIndex < 0 ) then return slicedArray
+  if ( endIndex = 0 ) then endIndex = array.Count()
+
+  for i = startIndex to ( endIndex - 1 )
+    slicedArray.push( array[i] )
+  end for
+
+  return slicedArray
 end function

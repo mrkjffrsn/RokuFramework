@@ -16,6 +16,7 @@ function TestSuite__ArrayUtils()
   this.addTest("Max() method check", TestCase__ArrayUtils_maxTestCase)
   this.addTest("Array Reduce TestCase", TestCase__ArrayUtils_arrayReduceTestCase)
   this.addTest("Array Filter TestCase", TestCase__ArrayUtils_arrayFilterTestCase)
+  this.addTest("Array Slice TestCase", TestCase__ArrayUtils_arraySliceTestCase)
   return this
 end function
 
@@ -64,4 +65,12 @@ end function
 function TestCase__ArrayUtils_arrayFilterTestCase()
   result = arrayFilter( m.numbers, filterTransform )
   return m.AssertEqual( result, [ 2 ] )
+end function
+
+function TestCase__ArrayUtils_arraySliceTestCase()
+
+  sampleArray = [ 1, 2, 3, 4 ]
+
+  slicedArray = arraySlice( sampleArray, 1, 3 )
+  return m.AssertEqual( slicedArray, [ 2, 3 ] )
 end function

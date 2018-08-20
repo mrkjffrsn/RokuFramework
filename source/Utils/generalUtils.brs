@@ -83,3 +83,55 @@ function isLowEndDevice() as Boolean
 
   return ( deviceInfo.GetGraphicsPlatform() = "directfb" ) or ( lowEndDeviceList.DoesExist(Lcase(modelNo)) )
 end function
+
+' Capitalizes the first letter of the given text
+' @param string text
+' @return string text
+function CapitalizeString( text = "" as String )
+
+  returnValue = ""
+
+  for each word in text.Tokenize( " " )
+    returnValue += CapitalizeWord( word ) + " "
+  end for
+
+  return Left(returnValue, Len(returnValue) - 1 )
+end function
+
+' Capitalizes the first letter of the given text
+' @param string text
+' @return string text
+function CapitalizeWord( text = "" as String )
+  return UCase( Left(text, 1) ) + LCase( Right( text, Len(Text) - 1) )
+end function
+
+
+' Creates a shallow copy of a given node
+' @param object item
+' @return object new item
+function shallowNodeCopy( item as Object )
+
+  copy = CreateObject( "roSGNode", item.subtype() )
+
+  fields = item.getFields()
+
+  ' NOTE: Had to do this. This stops warnings thrown by Roku
+  fields.Delete( "change" )
+  fields.Delete( "focusedChild" )
+
+  copy.setFields( fields )
+  return copy
+
+end function
+
+
+' Returns the query joining symbol ( & or ? )
+' @param string url
+' @return string symbol ( & or ? )
+function getQueryStringSymbol( url as String )
+
+  symbol = "&"
+  if ( ( isValid( url ) ) AND ( url.Instr("?") = -1 ) ) then symbol = "?"
+
+  return symbol
+end function
