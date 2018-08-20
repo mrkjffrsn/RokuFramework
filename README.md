@@ -12,8 +12,11 @@ framework is built with optimization in mind and runs well on low end and high e
 * Services
 * Controllers
 * General Utilites - Type checks and low end device checks
+* Array Utils - Map, Filter, Reduce, Slice ..etc
 * File utility module
+* Registry Utility ( Local storage )
 * Focus Manager
+* UI components - Vertical Scrollview, UIDialog, UIButtons
 * Navigation Stack - History keeper
 * Deeplink Integration
 * Integrated Test Suite for general files and scenegraph components
