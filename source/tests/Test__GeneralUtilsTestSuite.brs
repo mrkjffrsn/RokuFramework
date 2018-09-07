@@ -19,6 +19,7 @@ function TestSuite__GeneralUtils()
   this.addTest("isInteger() Type Check", TestCase__GeneralUtils_isIntegerTestCase)
   this.addTest("Capitalize Method", TestCase__GeneralUtils_capitalizeTestCase)
   this.addTest("QueryString Symbol Check", TestCase__GeneralUtils_queryStringSymbolTestCase)
+  this.addTest("HTML Strip Check", TestCase__GeneralUtils_stripHTMLFromStringTestCase)
 
   return this
 end function
@@ -75,4 +76,12 @@ function TestCase__GeneralUtils_queryStringSymbolTestCase()
   symbol = getQueryStringSymbol( url )
 
   return m.assertEqual( symbol, "&" )
+end function
+
+function TestCase__GeneralUtils_stripHTMLFromStringTestCase()
+
+  sample = "<p><div>Hi &nbsp;Roku is &amp;the best</div>"
+  cleanedString = stripHTMLFromString(sample)
+
+  return m.assertEqual( cleanedString, "Hi Roku is the best" )
 end function
