@@ -135,3 +135,23 @@ function getQueryStringSymbol( url as String )
 
   return symbol
 end function
+
+
+' Strips html <p> and &amp from strings
+' @param string s as string
+' @return string cleaned String
+function stripHTMLFromString( s )
+
+  if ( not isValid(s) )
+    return ""
+  end if
+
+  tagsRegEx = CreateObject( "roRegex", "<[a-zA-Z\/][^>]*>", "m" )
+  s = tagsRegEx.ReplaceAll( s, "" )
+
+  entitiesRegEx = CreateObject( "roRegex", "(&[a-zA-Z]*;)", "m" )
+  s = entitiesRegEx.ReplaceAll( s, "" )
+
+  return s
+
+end function
