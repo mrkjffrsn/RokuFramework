@@ -34,7 +34,8 @@ function openDialog( dialog as Object, currentFocusItem as Object, scene = GetSc
     dialog.translation = [ Abs(( 1920 - dialogBounds.width ) / 2), Abs((1080 - dialogBounds.height) / 2) ]
 
     dialog.parentFocusItem = currentFocusItem
-    applyFocus( dialog, true, "setDialog() - sceneUtils.brs" )
+    dialog.setFocus( true )
+    print "Setting focus on Dialog " + dialog.id + " openDialog() - sceneUtils.brs "
   end if
 
 end function

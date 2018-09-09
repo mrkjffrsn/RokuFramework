@@ -25,8 +25,8 @@ function onFocus(event as Object)
   if ( m.top.hasFocus() )
 
     if ( m.top.children.count() > 0 )
-      firstChild = m.top.children[0]
-      setFocusOnChild( firstChild, " onFocus() - " )
+      firstChild = m.top.children[ m.top.currentIndex ]
+      if ( isValid( firstChild ) ) then setFocusOnChild( firstChild, " onFocus() - " )
     end if
 
   end if
