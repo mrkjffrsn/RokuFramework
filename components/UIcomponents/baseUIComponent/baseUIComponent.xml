@@ -5,6 +5,7 @@
   <script type="text/brightscript" uri="pkg:/components/Utils/focusUtils.brs" />
   <script type="text/brightscript" uri="pkg:/components/Utils/buttonUtils.brs" />
   <script type="text/brightscript" uri="pkg:/source/Utils/generalUtils.brs" />
+  <script type="text/brightscript" uri="pkg:/source/Utils/arrayUtils.brs" />
   <script type="text/brightscript" uri="pkg:/source/constants.brs" />
 
 </component>
