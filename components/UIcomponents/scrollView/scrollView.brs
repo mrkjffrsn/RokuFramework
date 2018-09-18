@@ -4,14 +4,25 @@ function init()
   m.top.id = "scrollView"
   m.top.observeField("focusedChild", "onFocus")
 
+  constants = GetConstants()
+  m.isLowEndDevice = isLowEndDevice()
+
+  m.LAZY_LOAD_THRESHOLD = 5
+
   m.scrollContainer = m.top.findNode("scrollContainer")
   m.scrollAnimation = m.top.findNode("scrollAnimation")
   m.scrollTranslation = m.scrollAnimation.findNode("scrollTranslation")
   m.scrollTimer = m.top.findNode("scrollTimer")
+  m.scheduler = m.top.findNode("scheduler")
 
   m.scrollAnimation.optional = isLowEndDevice()
 
-  m.scrollTimer.observeField("fire", "fireScroller")
+  m.scrollTimer.observeField( "fire", "fireScroller" )
+  m.scheduler.observeField( "fire", "runTask" )
+
+  m.scheduler.duration = getSchedulerDuration( m.isLowEndDevice, constants )
+
+  m.reserveComponents = []
 
   m.keyPressedState = invalid
   m.top.currentIndex = 0
@@ -88,6 +99,19 @@ function onChildrenChange( event as Object )
 
   children = event.getData()
 
+  ' Clear previous children
+  childCount = m.scrollContainer.getChildCount()
+  if ( childCount > 0 )
+    m.scrollContainer.removeChildrenIndex(childCount,0)
+  end if
+
+  ' load minimal components
+  m.reserveComponents = children
+  children = arraySlice( children, 0, m.LAZY_LOAD_THRESHOLD )
+
+  m.top.loadedAllChildren = false
+  startScheduler()
+
   yPos = 0
 
   for each child in children
@@ -130,6 +154,20 @@ function onScrollTo( event as Object )
     end while
 
   end if
+end function
+
+function resetScrollview( event as Object )
+
+  status = event.getData()
+
+  if ( status )
+    m.scrollContainer.translation = [ 0, 0 ]
+    m.top.currentIndex = 0
+  end if
+end function
+
+function runTask( event as Object )
+  loadComponents()
 end function
 
 '***** HELPERS *****'
@@ -203,4 +241,62 @@ function paddingForIndex(index as Integer) as float
   end if
 
   return padding
+end function
+
+' Appends or lazy load components from reserve
+' @param integer totalNoOfVisibleItems on the scrollContainer
+function fetchReserveComponents( totalVisibleItems as Integer )
+
+  startIndex = totalVisibleItems
+  endIndex = totalVisibleItems + m.LAZY_LOAD_THRESHOLD
+
+  requiredComponents = arraySlice( m.reserveComponents, startIndex, endIndex )
+
+  yPos = ( m.scrollContainer.boundingRect().height ) + paddingForIndex( startIndex )
+
+  for each child in requiredComponents
+
+    child.translation = [ 0, yPos ]
+    m.scrollContainer.appendChild( child )
+
+    index = m.scrollContainer.getChildCount()
+    padding = paddingForIndex(index)
+    bounds = child.boundingRect()
+    yPos = yPos + bounds.height + padding
+  end for
+
+end function
+
+' Load remaining components
+function loadComponents()
+  scrollItemCount = m.scrollContainer.getChildCount()
+
+  fetchReserveComponents( scrollItemCount )
+
+  if ( scrollItemCount >= m.reserveComponents.count() )
+    stopScheduler()
+    m.top.loadedAllChildren = true
+  end if
+
+end function
+
+' Starts the scheduler on the controller
+function startScheduler()
+  m.scheduler.control = "start"
+end function
+
+' Stop the scheduler
+function stopScheduler()
+  m.scheduler.control = "stop"
+end function
+
+' Returns scheduler duration based on device type
+' @param Boolean true for LOW_END_DEVICE
+' @param Object constants
+' @return float duration
+function getSchedulerDuration( islowDevice as Boolean, constants as Object ) as Float
+
+  if ( islowDevice ) then return constants.SCHEDULER.TIMER_DURATION.LOW_END_DEVICE
+  return constants.SCHEDULER.TIMER_DURATION.HIGH_END_DEVICE
+
 end function

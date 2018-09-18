@@ -92,6 +92,7 @@ function arraySlice( array as Object, startIndex = 0 as Integer, endIndex = 0 as
 
   if ( startIndex < 0 ) then return slicedArray
   if ( endIndex = 0 ) then endIndex = array.Count()
+  if ( endIndex > array.Count() ) then endIndex = array.Count()
 
   for i = startIndex to ( endIndex - 1 )
     slicedArray.push( array[i] )

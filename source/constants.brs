@@ -55,6 +55,10 @@ function GetConstants()
         PRESSED_FOCUSED: "pressed_focused",
         PRESSED_UNFOCUSED: "pressed_unfocused",
         DISABLED: "disabled"
+      },
+
+      SCHEDULER: {
+        TIMER_DURATION: { LOW_END_DEVICE: 0.1, HIGH_END_DEVICE: 0.01 }
       }
 
     }
