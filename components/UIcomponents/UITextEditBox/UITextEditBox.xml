@@ -1,0 +1,32 @@
+<component name="UITextEditBox" extends="baseUIComponent">
+
+  <script type="text/brightscript" uri="pkg:/components/UIcomponents/UITextEditBox/UITextEditBox.brs" />
+
+  <interface>
+    <field id="width" type="float" alias="baseTxtBox.width" />
+    <field id="hintText" type="string" alias="baseTxtBox.hintText" />
+    <field id="maxTextLength" type="integer" alias="baseTxtBox.maxTextLength" />
+    <field id="secureMode" type="boolean" value="false" alias="baseTxtBox.secureMode" />
+    <field id="backgroundUri" type="string" alias="baseTxtBox.backgroundUri" />
+    <field id="textColor" type="color" alias="baseTxtBox.textColor" />
+    <field id="hintTextColor" type="color" alias="baseTxtBox.hintTextColor" />
+    <field id="active" type="boolean" alias="baseTxtBox.active" />
+    <field id="cursorPosition" type="integer" alias="baseTxtBox.cursorPosition" />
+    <field id="text" type="string" onChange="onTextChange" />
+    <field id="textBoxSelected" type="boolean" alwaysNotify="true" />
+  </interface>
+
+  <children>
+
+    <Poster
+      id="backgroundImg"
+      width="640"
+      height="67"
+      uri="pkg:/images/fhd/textEditBox/txtbox-nofocus.png"
+      translation="[0,0]" />
+
+    <TextEditBox id="baseTxtBox" backgroundUri="pkg:/images/fhd/textEditBox/txtbox-dummy.png" translation="[ 15, 5 ]"/>
+
+  </children>
+
+</component>
