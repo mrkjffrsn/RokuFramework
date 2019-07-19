@@ -23,15 +23,15 @@ function httpClient()
 
       init: function()
 
-        m.scene.httpTask.unobserveField("response")
-        m.scene.httpTask.observeField("response", "handleHttpClientResponse")
+        m.scene.httpTask.unobserveFieldScoped("response")
+        m.scene.httpTask.observeFieldScoped("response", "handleHttpClientResponse")
 
       end function,
 
       destory: function()
 
         m.requests = {}
-        m.scene.httpTask.unobserveField("response")
+        m.scene.httpTask.unobserveFieldScoped("response")
 
       end function
     }

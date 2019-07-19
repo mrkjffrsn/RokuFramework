@@ -9,6 +9,7 @@ end function
 function onNavigateTo( params as Object )
 
   applyFocus( m.top, true, "onNavigateTo() - HomeController.brs" )
+  getHomePageData()
 
 end function
 
@@ -41,5 +42,7 @@ function getHomePageData()
 
 ' Homepage callback'
 function onHomePageLoad( data, params )
+
+  print "Response - "; data
 
 end function
