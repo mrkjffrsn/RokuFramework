@@ -9,6 +9,7 @@ function init()
 
   m.HTTP_TYPES = GetConstants().HTTP_TYPES
   m.jobs = {}
+  m.top.reqRepo = {}
 
 end function
 

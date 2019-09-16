@@ -6,8 +6,6 @@ function httpClient()
 
     m.httpClient = {
 
-      requests: { },
-
       scene: getScene(),
 
       sendRequest: function( req )
@@ -16,7 +14,11 @@ function httpClient()
 
         if (isValid(requestQuery))
           m.scene.httpTask.request = requestQuery
-          m.requests[requestQuery.id] = req
+
+          reqRepo = m.scene.httpTask.reqRepo
+          reqRepo[ requestQuery.id ] = req
+          m.scene.httpTask.reqRepo = reqRepo
+ 
         end if
 
       end function,
@@ -30,7 +32,6 @@ function httpClient()
 
       destory: function()
 
-        m.requests = {}
         m.scene.httpTask.unobserveFieldScoped("response")
 
       end function
@@ -51,12 +52,15 @@ function handleHttpClientResponse( event as Object )
 
   http = httpClient()
   response = event.getData()
+  httpTask = event.getRoSGNode()
 
   requestParams = response.request
+  request = httpTask.reqRepo[ requestParams.id ]
 
-  request = http.requests[requestParams.id]
   if (isValid(request) and isValid(request.callback))
     request.callback( response, request.callbackParams )
+  else if (isValid(request) and isValid(request.httpResponse))
+    request.httpResponse.response = response
   end if
 
 end function

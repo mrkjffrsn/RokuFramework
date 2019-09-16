@@ -10,3 +10,4 @@ out
 # Packages #
 ############
 *.zip
+.DS_Store

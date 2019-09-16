@@ -32,17 +32,17 @@ function getHomePageData()
       "Accept": "application/json",
       "Content-Type": "application/json"
     },
-    callback: onHomePageLoad,
-    callbackParams: { page: "HomePage" }
+    httpResponse: CreateObject("roSGNode", "HttpResponseNode")
   }
 
+  request.httpResponse.observeField("response", "onHomePageLoad")
   m.http.sendRequest( request )
 
  end function
 
-' Homepage callback'
-function onHomePageLoad( data, params )
 
-  print "Response - "; data
+function onHomePageLoad( event as Object )
+
+  print "Output"; event.getData()
 
 end function
