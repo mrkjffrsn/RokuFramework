@@ -1,0 +1,7 @@
+<component name="HttpResponseNode" extends="ContentNode">
+
+  <interface>
+      <field id="response" type="node" />
+  </interface>
+
+</component>

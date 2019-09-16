@@ -6,6 +6,7 @@
   <script type="text/brightscript" uri="pkg:/source/constants.brs" />
 
   <interface>
+    <field id="reqRepo" type="assocarray" />
     <field id="request" type="assocarray" />
     <field id="response" type="node" />
   </interface>
