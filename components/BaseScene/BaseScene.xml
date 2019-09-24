@@ -9,6 +9,7 @@
   <script type="text/brightscript" uri="pkg:/source/Factories/controllerFactory.brs" />
 
   <interface>
+    <field id="currentFocusItem" type="node" />
     <field id="currentController" type="node" />
     <field id="loadController" type="assocarray" alwaysNotify="true" onchange="onLoad" />
     <field id="unloadController" type="boolean" alwaysNotify="true" onchange="onUnLoad" />
