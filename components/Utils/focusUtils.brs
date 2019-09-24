@@ -6,9 +6,10 @@
 function applyFocus(obj as Object, focusState = true as Boolean, log = "" as String )
 
   if (isValid(obj))
+    scene = getScene()
 
     obj.setFocus(focusState)
-    m.currentFocusItem = obj
+    scene.currentFocusItem = obj
     print " Setting Focus on component ID " + obj.id + " Log : " + log
   end if
 end function
