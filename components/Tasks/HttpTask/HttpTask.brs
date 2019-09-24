@@ -63,6 +63,10 @@ function handleHTTPRequest( event )
 
   reqMethod = request.method
 
+  #if enable_http_logs
+    logHttpRequest( request.url, request.headers, reqMethod, request.data )
+  #end if
+
   if (reqMethod = m.HTTP_TYPES.GET or reqMethod = m.HTTP_TYPES.DELETE)
       success = httpTransfer.asyncGetToString()
   else if (reqMethod = m.HTTP_TYPES.POST or reqMethod = m.HTTP_TYPES.PUT)
@@ -201,11 +205,51 @@ end function
 function createResponseModel( response as Object ) as Object
 
   responseModel = CreateObject("roSGNode", "ResponseModel")
-  responseModel.error = response.error
+  responseModel.errorStatus = response.error
   responseModel.code = response.code
   responseModel.data = response.data
   responseModel.msg = response.msg
   responseModel.request = response.request
 
+  #if enable_http_logs
+    logHttpResponse( response.request.url, response.error, response.code, response.data )
+  #end if
+
   return responseModel
+end function
+
+' Prints the HTTP Request to the console log
+' @param string url
+' @param object headers
+' @param string method type
+' @param object data 
+function logHttpRequest( url as String, headers as Object, method as String, data = invalid as dynamic )
+
+  print "************ HTTP Request **************"
+  print ""
+  print " Method Type: "; method
+  print " URL: "; url
+  print " Headers: "; headers
+  if ( isValid( data ) ) then print " Body: "; data
+  print ""
+  print "*****************************************"
+
+end function
+
+' Prints the HTTP Response to the console log
+' @param string url
+' @param boolean error status
+' @param string code
+' @param object data 
+function logHttpResponse( url as String, errorStatus, code, data )
+
+  print "************ HTTP Response **************"
+  print ""
+  print " URL: "; url
+  print " Error Status: "; errorStatus
+  print " Code: "; code
+  print " Data: "; data
+  print ""
+  print "*****************************************"
+
 end function
